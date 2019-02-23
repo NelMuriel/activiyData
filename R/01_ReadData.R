@@ -15,5 +15,5 @@ read_sets <- function(group = c("test", "train")){
 test_dfs <- read_sets("test")
 train_dfs <- read_sets("train")
 
-act_labels <- read.table("data/activity_labels.txt", stringsAsFactors = FALSE)
+activity_labels <- read.table("data/activity_labels.txt", stringsAsFactors = FALSE)
 features <- read.table("data/features.txt", stringsAsFactors = FALSE)

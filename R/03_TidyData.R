@@ -5,7 +5,11 @@
 tidy_df <- full_df %>% 
   tidyr::gather(measurement, value, 1:79) %>% 
   tidyr::separate(measurement, into = c("statistic", "measurement", "dimension"))
-  
+
+
+print(head(tidy_df))
+message("The tidy data is now stored as tidy_df.  If you wish to see the summary, open 03_TidyData.R") 
+
 
 # creating the summary data frame
 tidy_df %>% 
