@@ -20,7 +20,27 @@ Version 1.0**, and put together by Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca O
 
 The resulting data is contained in the directory **data**.  In this directory there are four plain text files and two further directories, **train** and **test**.  The plain files are `activity_labels.txt`, `features.txt`, `features_info.txt`, and `README.txt`.  The first of these files links the textual description of each activity (for instance *walk upstairs*) with a numeric value (identifier = 2). The `features.txt` file contains the names of all the data computed from the experimental records, further information about which can be found in the file `features_info.txt`.  Finally, the `README.txt` file, briefly explains the data set.
 
-Each one of the two sub-directories, **train** and **test**, contains a further one named **Intertial Signals** which is of no relavance to the present project, and three plain text files: `subject_test.txt`, `X_test.txt`, and `y_test.txt`.  The first of these files contains the subject identifier for each set of measurements, and the file `y_test.txt` contains the corresponding activity number (1 to 6).    The file `X_test.txt`contains the values of all the 561 measurments.
+Each one of the two sub-directories, **train** and **test**, contains a further one named **Intertial Signals** which is of no relavance to the present project, and three plain text files: `subject_test.txt`, `X_test.txt`, and `y_test.txt`.  The first of these files contains the subject identifier for each set of measurements, and the file `y_test.txt` contains the corresponding activity number (1 to 6).    The file `X_test.txt`contains the values of all the 561 measurments.  These features are the combination of the following aspects 
+
+- BodyAcc
+- GravityAcc
+- BodyAccJerk
+- BodyGyro
+- BodyGyroJerk
+
+in the three dimensions, X, Y, and Z. Also included are
+
+- BodyAccMag
+- GravityAccMag
+- BodyAccJerkMag
+- BodyGyroMag
+- BodyGyroJerkMag
+
+All these features are recorded in both, the time and the frequency domain.  Also included are the measurements labelled gravityMean
+tBodyAccMean, tBodyAccJerkMean, tBodyGyroMean, and tBodyGyroJerkMean which are used to compute a particular summary statistic called angle().
+For each measurement, 17 statistics are given among which mean() and std() are of particular relevance for this project.
+
+For more information on the units of measurement and methods, see the README.txt inside the *data* directory.
 
 ## Data transformations and summary
 
@@ -28,7 +48,7 @@ The subject and activity identifiers were first binded with the measurements for
 
 Binding the rows of the two previous data frames, a final data frame, named `full_df`, was produced which contains both groups.  The names of this data frame are set with the aid of the file `features.txt` and they are then simplified to be both, more humanly readable and more ammenable to future work.  
 
-Next, a tidy version of this data frame was created.  Two particular issues were solved at this stage, namely: 1) the column names of `full_df`, arising from `features.txt` represent variables and 2) each one of these names represents three different variables.  We solve issue (1) by gathering the data frame columns into the pair (measurment, value) and (2) is solved by separating this new column into `statistic` (with values "mean" and "sd"), `measurment` (which identifies the particular measurment being taken such as Body Acceleration in the time domain -tBodyAcc), and `dimension` (which registers the X, Y and Z dimension of a 3-dimensional record).
+Next, a tidy version of this data frame was created.  Two particular issues were solved at this stage, namely: 1) the column names of `full_df`, arising from `features.txt` represent variables and 2) each one of these names represents three different variables.  We solve issue (1) by gathering the data frame columns into the pair (measurment, value) and (2) is solved by separating this new column into `statistic` (with values "mean" and "sd"), `measurment` (which identifies the particular measurment being taken such as Body Acceleration in the time domain -tBodyAcc), and `dimension` (which registers the X, Y and Z dimension of a 3-dimensional record and prints ANGLE for the measurements used for the angle() variable).
 
 Finally, a summary data frame was created which shows the average value of each measurement for every activity and subject.
 

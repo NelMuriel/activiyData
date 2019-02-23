@@ -2,6 +2,9 @@
 
 This file explains how all scripts work and how they are connected.  The scripts can be found in the folder **R**.
 
+## run_analysis.R
+This file sources three scripts: 01_ReadData, 02_CleanUp, and 03_TidyData.  It produces an object called `tidy_df`, a tidy data set of ADL measurements. See the Codebook for further details.
+
 ## 01_ReadData.R
 
 This script reads the data bases for each group, testing and training, and stores them into two separate lists. Each list contains three elements named "X", "y", and "subject", respectively.  The lists are named `test_dfs` and `train_dfs`.
@@ -25,5 +28,7 @@ This script uses the data frames obtained from `02_CleanUp.R` and makes them tid
 1. In `full_df`, columns contain variable names which is solved by gathering into the key `measurement`
 2. The newly gathered column contains three variables, which are `separate`d into `statistic`, `measurement`, and `dimension`.
 
-Finally, a summary data frame is created which contains the mean value of each measurement for each subject and activity.   
+Finally, a summary data frame is created which contains the mean value of each measurement for each subject and activity.  
+
+
 

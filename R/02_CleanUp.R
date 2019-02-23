@@ -33,6 +33,7 @@ train <- bind_cols(train_dfs) %>%
 full_df <- bind_rows(test, train)
 new_names <- strsplit(names(full_df)[-(80:82)], split = "-") %>% 
   sapply(function(x) paste(x[2], x[1], x[3], sep = "_")) %>% 
-  stringr::str_replace("\\(\\)", "")
+  stringr::str_replace("\\(\\)", "") %>% 
+  stringr::str_replace("NA", "ANGLE")
 names(full_df) <- c(new_names, "activity", "subject", "group")
   
